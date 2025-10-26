@@ -16,3 +16,12 @@ export async function fetchCategories() {
   return data;
 }
 
+export async function fetchProducts(currentPage) {
+  const { data } = await axios(`${ENDPOINTS.PRODUCTS}`, {
+    params: {
+      limit: 12,
+      skip: (currentPage - 1) * 12,
+    },
+  });
+  return data;
+}
