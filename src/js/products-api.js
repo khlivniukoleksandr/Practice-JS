@@ -25,3 +25,8 @@ export async function fetchProducts(currentPage) {
   });
   return data;
 }
+
+export async function fetchProductById(id) {
+  const { data } = await axios(`${ENDPOINTS.PRODUCTS}/${id}`);
+  return data;
+}

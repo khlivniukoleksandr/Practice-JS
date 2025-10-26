@@ -1,4 +1,5 @@
-import { getCategories, getProducts } from './js/handlers';
+import { getCategories, getProducts, onCardClick } from './js/handlers';
+import { refs } from './js/refs';
 
 //Логіка сторінки Home
 getCategories();
@@ -8,3 +9,4 @@ refs.loadMore.addEventListener('click', () => {
   page++;
   getProducts();
 });
+refs.productList.addEventListener('click', onCardClick);

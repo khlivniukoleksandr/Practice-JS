@@ -38,3 +38,19 @@ export function renderProducts(data) {
     refs.loadMore.classList.add('is-hidden');
   }
 }
+
+export function renderModalCard(product) {
+  const productTags = product.tags.map(tag => `<li>${tag}</li>`).join('');
+  return `
+  <img class="modal-product__img" src="${product.thumbnail}" alt="${product.title}" />
+      <div class="modal-product__content">
+        <p class="modal-product__title">${product.title}</p>
+        <ul class="modal-product__tags">${productTags}</ul>
+        <p class="modal-product__description">${product.description}</p>
+        <p class="modal-product__shipping-information">Shipping: ${product.shippingInformation}</p>
+        <p class="modal-product__return-policy">Return Policy: ${product.returnPolicy}</p>
+        <p class="modal-product__price">Price: $${product.price}</p>
+        <button class="modal-product__buy-btn" type="button">Buy</button>
+      </div>  
+    `;
+}
