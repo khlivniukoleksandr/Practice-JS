@@ -5,4 +5,8 @@ import { refs } from './js/refs';
 getCategories();
 getProducts();
 
+refs.loadMore.addEventListener('click', () => {
+  page++;
+  getProducts();
+});
 refs.productList.addEventListener('click', onCardClick);

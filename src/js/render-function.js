@@ -12,7 +12,12 @@ export function renderCategories(data) {
   refs.categoryList.innerHTML = markup;
 }
 
+let page = 1;
+const perPage = 12;
+let totalPages = 0;
+
 export function renderProducts(data) {
+  totalPages = Math.ceil(data.total / perPage);
   const markup = data.products
     .map(
       elem => `
@@ -26,6 +31,12 @@ export function renderProducts(data) {
     )
     .join('');
   refs.productList.innerHTML = markup;
+
+   if (page < totalPages) {
+    refs.loadMore.classList.remove('is-hidden');
+  } else {
+    refs.loadMore.classList.add('is-hidden');
+  }
 }
 
 export function renderModalCard(product) {
