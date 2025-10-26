@@ -25,3 +25,12 @@ export async function fetchProducts(currentPage) {
   });
   return data;
 }
+
+export async function fetchSearch(query) {
+  const { data } = await axios(`${ENDPOINTS.PRODUCTS}/search`, {
+    params: {
+      q: query,
+    },
+  });
+  return data;
+}
