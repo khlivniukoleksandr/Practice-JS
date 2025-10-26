@@ -1,6 +1,8 @@
 import { activeFirstBtn } from './helpers';
-import { fetchCategories } from './products-api';
-import { renderCategories } from './render-function';
+import { fetchCategories, fetchProducts } from './products-api';
+import { renderCategories, renderProducts } from './render-function';
+
+let page = 1;
 
 export async function getCategories() {
   try {
@@ -12,5 +14,11 @@ export async function getCategories() {
   }
 }
 
-
-
+export async function getProducts() {
+  try {
+    const data = await fetchProducts(page);
+    renderProducts(data);
+  } catch (error) {
+    console.log(error);
+  }
+}

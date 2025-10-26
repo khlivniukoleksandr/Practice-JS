@@ -15,3 +15,33 @@ export async function fetchCategories() {
   const { data } = await axios(`${ENDPOINTS.CATEGORIES}`);
   return data;
 }
+
+export async function fetchProducts(currentPage) {
+  const { data } = await axios(`${ENDPOINTS.PRODUCTS}`, {
+    params: {
+      limit: 12,
+      skip: (currentPage - 1) * 12,
+    },
+  });
+  return data;
+}
+
+export async function fetchProductsByCategory(category) {
+  try {
+    let url;
+    if (category === 'All') {
+      url = 'https://dummyjson.com/products?limit=100'; 
+    } else {
+      url = `https://dummyjson.com/products/category/${category}`;
+    }
+
+    const { data } = await axios.get(url);
+
+    // повертаємо об'єкт із полем products
+    return { products: data.products || [] };
+
+  } catch (error) {
+    console.error(error);
+    return { products: [] };
+  }
+}
