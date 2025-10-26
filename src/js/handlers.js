@@ -18,8 +18,8 @@ export async function getCategories() {
 
 export async function getProducts() {
   try {
-    const products = await fetchProducts(page);
-    renderProducts(products);
+    const data = await fetchProducts(page);
+    renderProducts(data);
   } catch (error) {
     console.log(error);
   }

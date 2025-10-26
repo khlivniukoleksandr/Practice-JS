@@ -26,6 +26,24 @@ export async function fetchProducts(currentPage) {
   return data;
 }
 
+export async function fetchProductsByCategory(category) {
+  try {
+    let url;
+    if (category === 'All') {
+      url = 'https://dummyjson.com/products?limit=100'; 
+    } else {
+      url = `https://dummyjson.com/products/category/${category}`;
+    }
+
+    const { data } = await axios.get(url);
+
+ 
+    return { products: data.products || [] };
+
+  } catch (error) {
+    console.error(error);
+    return { products: [] };
+  }}
 export async function fetchProductById(id) {
   const { data } = await axios(`${ENDPOINTS.PRODUCTS}/${id}`);
   return data;
