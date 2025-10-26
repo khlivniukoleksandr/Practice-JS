@@ -5,4 +5,7 @@ import { refs } from './js/refs';
 getCategories();
 getProducts();
 
+refs.form.addEventListener('submit', handleSearchFormSubmit);
+refs.input.addEventListener('input', handleSearchInput);
+refs.clearBtn.addEventListener('click', handleClearSearch);
 refs.productList.addEventListener('click', onCardClick);
