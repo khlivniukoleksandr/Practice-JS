@@ -7,4 +7,7 @@ export const refs = {
   searchForm: document.querySelector('.search-form'),
   searchFormInput: document.querySelector('.search-form__input'),
   clearBtn: document.querySelector('.search-form__btn-clear'),
+  modalWindow: document.querySelector('.modal'),
+  modalCard: document.querySelector('.modal-product'),
+  modalCloseBtn: document.querySelector('.modal__close-btn'),
 };

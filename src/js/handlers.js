@@ -2,6 +2,8 @@ import { activeFirstBtn } from './helpers';
 import { fetchCategories, fetchProducts } from './products-api';
 import { refs } from './refs';
 import { renderCategories, renderProducts } from './render-function';
+import { showModal } from './modal';
+import { refs } from './refs';
 
 let page = 1;
 let currentQuery = '';
@@ -58,12 +60,26 @@ export async function handleClearSearch() {
   try {
     const products = await fetchProducts(currentPage);
     renderProducts(products);
+
   } catch (error) {
     console.log(error);
   }
 }
 
+export async function onCardClick(e) {
+  try {
+    const productCard = e.target.closest('li');
+    const currentID = productCard.dataset.id;
+    showModal(currentID);
+  } catch (error) {
+    console.log(error);
+  }
+}
 export function handleSearchInput(e) {
   const value = e.target.value.trim();
   refs.clearBtn.hidden = !value;
+}
+export function onModalClose() {
+  refs.modalWindow.classList.remove('modal--is-open');
+  refs.modalCloseBtn.removeEventListener('click', onModalClose);
 }
