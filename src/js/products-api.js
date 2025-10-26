@@ -37,11 +37,14 @@ export async function fetchProductsByCategory(category) {
 
     const { data } = await axios.get(url);
 
-    // повертаємо об'єкт із полем products
+ 
     return { products: data.products || [] };
 
   } catch (error) {
     console.error(error);
     return { products: [] };
-  }
+  }}
+export async function fetchProductById(id) {
+  const { data } = await axios(`${ENDPOINTS.PRODUCTS}/${id}`);
+  return data;
 }

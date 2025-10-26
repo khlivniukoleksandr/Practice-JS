@@ -1,7 +1,9 @@
 import { getCategories, getProducts } from './js/handlers';
 import { renderProducts } from './js/render-function';
 import { fetchProductsByCategory } from './js/products-api';
+import { getCategories, getProducts, onCardClick } from './js/handlers';
 import { refs } from './js/refs';
+
 //Логіка сторінки Home
 getCategories();
 getProducts();
@@ -22,7 +24,7 @@ async function handlerFind(e) {
     findBth.classList.add("categories__btn--active");
     const category = findBth.textContent;
 
-  const categoryData = await fetchProductsByCategory(category); // { products: [...] }
+  const categoryData = await fetchProductsByCategory(category); 
 allProducts = categoryData.products;
 
 
@@ -36,3 +38,4 @@ allProducts = categoryData.products;
 
    
 }
+refs.productList.addEventListener('click', onCardClick);
